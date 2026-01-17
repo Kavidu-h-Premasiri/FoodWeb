@@ -1,0 +1,56 @@
+.footer {
+  background-color: #111827;
+  color: #d1d5db;
+  margin-top: 80px;
+}
+
+.footer-logo {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.footer-title {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #f97316; /* food orange */
+}
+
+/* Bottom copyright */
+.footer-bottom {
+  border-top: 1px solid #374151;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+}

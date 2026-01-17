@@ -1,0 +1,86 @@
+/* Page base */
+.contact-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c2c2c;
+}
+
+/* Cards */
+.contact-page .card {
+  border-radius: 12px;
+  border: none;
+  background-color: #ffffff;
+}
+
+/* Card shadow enhancement */
+.contact-page .shadow-sm {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+.contact-page h3 {
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+.contact-page h5 {
+  font-weight: 600;
+  color: #374151;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.contact-page p {
+  margin-bottom: 6px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+/* Strong labels */
+.contact-page p strong {
+  color: #111827;
+}
+
+/* Accordion styling */
+.contact-page .accordion-item {
+  border: none;
+  margin-bottom: 8px;
+}
+
+.contact-page .accordion-button {
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.contact-page .accordion-button:not(.collapsed) {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.contact-page .accordion-button:focus {
+  box-shadow: none;
+}
+
+.contact-page .accordion-body {
+  background-color: #ffffff;
+  color: #4b5563;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Spacing for mobile */
+@media (max-width: 768px) {
+  .contact-page .card {
+    margin-bottom: 20px;
+  }
+
+  .contact-page h3 {
+    font-size: 1.4rem;
+  }
+
+  .contact-page h5 {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,86 @@
+/* Navbar background */
+.navbar {
+  background: linear-gradient(
+    90deg,
+    #fff3cd,   /* light yellow */
+    #ffe8cc,   /* light orange */
+    #e6f4ea    /* light green */
+  );
+}
+
+/* Brand text */
+.navbar-brand strong {
+  font-size: 1.4rem;
+  color: #e67e22; /* soft orange */
+  letter-spacing: 0.5px;
+}
+
+/* Logo smooth look */
+.navbar-brand img {
+  border-radius: 50%;
+}
+
+/* Nav links */
+.navbar-nav .nav-link {
+  color: #2c3e50;
+  font-weight: 500;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Nav link hover */
+.navbar-nav .nav-link:hover {
+  color: #27ae60; /* light green */
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  background-color: #fffbea; /* light yellow */
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Dropdown items */
+.dropdown-item {
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown hover */
+.dropdown-item:hover {
+  background-color: #e6f4ea; /* light green */
+  color: #27ae60;
+}
+
+/* Logout button */
+button.btn-outline-danger {
+  border-color: #f5b041;
+  color: #f39c12;
+  font-weight: 500;
+}
+
+/* Logout hover */
+button.btn-outline-danger:hover {
+  background-color: #f5b041;
+  border-color: #f5b041;
+  color: white;
+}
+
+/* Mobile spacing fix */
+@media (max-width: 991px) {
+  .navbar-nav {
+    padding-top: 10px;
+  }
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
