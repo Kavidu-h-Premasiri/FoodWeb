@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../components/AdminNav'
-import axios from 'axios'
+import api from "../api";
 import { Container, Card, Button, Form, Table } from "react-bootstrap"
 
 function Admincm() {
@@ -12,7 +12,7 @@ function Admincm() {
   const [editId, setEditId] = useState(null)
 
   const fetchData = () => {
-    axios.get("http://localhost:3002/admincm")
+    api.get("/admincm")
       .then(res => setAdmincms(res.data))
       .catch(err => console.log(err))
   }
@@ -27,14 +27,14 @@ function Admincm() {
     const data = { name, image, des, price }
 
     if (editId) {
-      axios.put(`http://localhost:3002/admincm/${editId}`, data)
+      api.put(`/admincm/${editId}`, data)
         .then(() => {
           alert("Food updated successfully")
           resetForm()
           fetchData()
         })
     } else {
-      axios.post("http://localhost:3002/admincm", data)
+      api.post("/admincm", data)
         .then(() => {
           alert("Food added successfully")
           resetForm()
@@ -53,7 +53,7 @@ function Admincm() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure?")) {
-      axios.delete(`http://localhost:3002/admincm/${id}`)
+      api.delete(`/admincm/${id}`)
         .then(() => fetchData())
     }
   }

@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import NavigationBar from '../components/NavigationBar'
 import Footer from '../components/Footer'
 import { addToCart } from "../components/cartUtils";
-import axios from 'axios'
+import api from "../api";
 import "../css/Home.css"
 
 function RiceMeals() {
@@ -11,7 +11,7 @@ function RiceMeals() {
 
   useEffect(() => {
     // Fetch data from AdminRM collection
-    axios.get("http://localhost:3002/adminrm")
+    api.get("/adminrm")
       .then(res => setRiceMeals(res.data))
       .catch(err => console.log(err))
   }, [])

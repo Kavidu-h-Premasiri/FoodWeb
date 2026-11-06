@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../components/AdminNav'
-import axios from 'axios'
+import api from "../api";
 import { Container, Card, Button, Form, Table } from "react-bootstrap"
 
 function Adminff() {
@@ -12,7 +12,7 @@ function Adminff() {
   const [editId, setEditId] = useState(null)
 
   const fetchData = () => {
-    axios.get("http://localhost:3002/adminff")
+    api.get("/adminff")
       .then(res => setAdminffs(res.data))
       .catch(err => console.log(err))
   }
@@ -27,14 +27,14 @@ function Adminff() {
     const data = { name, image, des, price }
 
     if (editId) {
-      axios.put(`http://localhost:3002/adminff/${editId}`, data)
+      api.put(`/adminff/${editId}`, data)
         .then(() => {
           alert("Food updated successfully")
           resetForm()
           fetchData()
         })
     } else {
-      axios.post("http://localhost:3002/adminff", data)
+      api.post("/adminff", data)
         .then(() => {
           alert("Food added successfully")
           resetForm()
@@ -53,7 +53,7 @@ function Adminff() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      axios.delete(`http://localhost:3002/adminff/${id}`)
+      api.delete(`/adminff/${id}`)
         .then(() => fetchData())
     }
   }

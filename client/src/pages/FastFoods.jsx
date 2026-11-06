@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import NavigationBar from '../components/NavigationBar'
 import Footer from '../components/Footer'
-import axios from 'axios'
+import api from "../api";
 import { addToCart } from "../components/cartUtils";
 import "../css/Home.css"
 
@@ -11,7 +11,7 @@ function FastFoods() {
 
   useEffect(() => {
     // Fetch data from AdminFF collection
-    axios.get("http://localhost:3002/adminff")
+    api.get("/adminff")
       .then(res => setFastFoods(res.data))
       .catch(err => console.log(err))
   }, [])

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Card } from "react-bootstrap";
-import axios from "axios";
+import api from "../api";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ function AdminPage() {
 
     //validation
 
-    axios.post('http://localhost:3002/adminPage',{name,image,des,price,category})
+    api.post('/adminPage',{name,image,des,price,category})
             .then(result=>{
                 console.log(result)
                 alert("Successful")

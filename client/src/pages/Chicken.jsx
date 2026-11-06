@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import NavigationBar from '../components/NavigationBar'
 import { addToCart } from "../components/cartUtils";
 import Footer from '../components/Footer'
-import axios from 'axios'
+import api from "../api";
 import "../css/Home.css"
 
 function Chicken() {
@@ -11,7 +11,7 @@ function Chicken() {
 
   useEffect(() => {
     // Fetch data from AdminCM collection
-    axios.get("http://localhost:3002/admincm")
+    api.get("/admincm")
       .then(res => setChickenFoods(res.data))
       .catch(err => console.log(err))
   }, [])

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
+import api from "../api";
 import { Table, Button, Container, Modal, Form } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom" // for navigation
 
@@ -10,7 +10,7 @@ function AdminFoodTable() {
   const navigate = useNavigate() // hook to redirect
 
   const fetchFoods = () => {
-    axios.get("http://localhost:3002/adminFoods")
+    api.get("/adminFoods")
       .then(res => setFoods(res.data))
       .catch(err => console.log(err))
   }
@@ -21,7 +21,7 @@ function AdminFoodTable() {
 
   const deleteFood = (id) => {
     if (window.confirm("Delete this item?")) {
-      axios.delete(`http://localhost:3002/adminFoods/${id}`)
+      api.delete(`/adminFoods/${id}`)
         .then(fetchFoods)
     }
   }
@@ -32,8 +32,8 @@ function AdminFoodTable() {
   }
 
   const handleUpdate = () => {
-    axios.put(
-      `http://localhost:3002/adminFoods/${selectedFood._id}`,
+    api.put(
+      `/adminFoods/${selectedFood._id}`,
       selectedFood
     ).then(() => {
       setShow(false)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../components/AdminNav'
-import axios from 'axios'
+import api from "../api";
 import { Container, Card, Button, Form, Table } from "react-bootstrap"
 
 function Adminrm() {
@@ -12,7 +12,7 @@ function Adminrm() {
   const [editId, setEditId] = useState(null)
 
   const fetchData = () => {
-    axios.get("http://localhost:3002/adminrm")
+    api.get("/adminrm")
       .then(res => setAdminrms(res.data))
       .catch(err => console.log(err))
   }
@@ -27,7 +27,7 @@ function Adminrm() {
 
     if (editId) {
       // Edit existing item
-      axios.put(`http://localhost:3002/adminrm/${editId}`, data)
+      api.put(`/adminrm/${editId}`, data)
         .then(() => {
           alert("Food updated successfully")
           resetForm()
@@ -36,7 +36,7 @@ function Adminrm() {
         .catch(err => console.log(err))
     } else {
       // Add new item
-      axios.post("http://localhost:3002/adminrm", data)
+      api.post("/adminrm", data)
         .then(() => {
           alert("Food added successfully")
           resetForm()
@@ -56,7 +56,7 @@ function Adminrm() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      axios.delete(`http://localhost:3002/adminrm/${id}`)
+      api.delete(`/adminrm/${id}`)
         .then(() => fetchData())
         .catch(err => console.log(err))
     }

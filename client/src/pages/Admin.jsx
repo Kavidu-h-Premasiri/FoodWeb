@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../api'
 
 function Admin() {
     const [email, setEmail] = useState("")
@@ -9,14 +10,13 @@ function Admin() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // Simple admin check (replace with your real backend API)
-        if (email === "admin@gmail.com" && password === "admin123") {
-            // Save admin token for protected admin routes
-            localStorage.setItem("adminToken", "adminLoggedIn");
-            navigate("/adminhome");
-        } else {
-            alert("Invalid admin credentials");
-        }
+        // the server checks the credentials and returns a signed admin token
+        api.post("/admin", { email, password })
+            .then(result => {
+                localStorage.setItem("adminToken", result.data.token);
+                navigate("/adminhome");
+            })
+            .catch(() => alert("Invalid admin credentials"));
     }
 
     return (
@@ -28,7 +28,7 @@ function Admin() {
                         <label><strong>Email</strong></label>
                         <input
                             type='email'
-                            placeholder='admin@gmail.com'
+                            placeholder='Admin email'
                             className='form-control rounded-0'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -38,7 +38,7 @@ function Admin() {
                         <label><strong>Password</strong></label>
                         <input
                             type='password'
-                            placeholder='admin123'
+                            placeholder='Admin password'
                             className='form-control rounded-0'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}

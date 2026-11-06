@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { Container, Table } from "react-bootstrap";
 import AdminNav from "../components/AdminNav";
 
@@ -7,7 +7,7 @@ function AdminOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/orders")
+    api.get("/orders")
       .then(res => setOrders(res.data));
   }, []);
 

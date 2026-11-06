@@ -3,7 +3,7 @@ import { Container, Table, Button } from "react-bootstrap";
 import NavigationBar from "../components/NavigationBar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 import { getCart, saveCart } from "../components/cartUtils";
 
 function Cart() {
@@ -57,7 +57,7 @@ function Cart() {
       totalPrice
     };
 
-    await axios.post("http://localhost:3002/orders", orderData);
+    await api.post("/orders", orderData);
 
     saveCart([]);       // clear cart
     setCart([]);

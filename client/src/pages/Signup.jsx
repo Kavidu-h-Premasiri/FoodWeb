@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import { Link } from 'react-router-dom'
-import axios from 'axios'
+import api from "../api";
 import { Link, useNavigate } from 'react-router-dom'
 
 function Signup() {
@@ -32,13 +32,13 @@ function Signup() {
         }
 
 
-        axios.post('http://localhost:3002/',{name,email,password})
+        api.post('/',{name,email,password})
             .then(result=>{
                 console.log(result)
                 navigate('/login')
             })
             .catch(err=>{
-                console.log(err)
+                alert(err.response?.data?.message || "Sign up failed")
             })
     }
 

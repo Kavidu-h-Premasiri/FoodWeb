@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import api from "../api";
 import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
@@ -10,19 +10,15 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        axios.post("http://localhost:3002/login", { email, password })
+        api.post("/login", { email, password })
             .then(result => {
-                console.log(result.data);
-
-                if (result.data === "success") {
-                    // Save user token for protected routes
-                    localStorage.setItem("token", "userLoggedIn");
+                if (result.data.status === "success") {
+                    // keep the signed token from the server for protected routes
+                    localStorage.setItem("token", result.data.token);
                     navigate("/home");
-                } else {
-                    alert(result.data);
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => alert(err.response?.data?.message || "Login failed"));
     }
 
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../components/AdminNav'
-import axios from 'axios'
+import api from "../api";
 import { Container, Card, Button, Form, Table } from "react-bootstrap"
 
 function AdminHome() {
@@ -12,7 +12,7 @@ function AdminHome() {
   const [editId, setEditId] = useState(null)
 
   const fetchData = () => {
-    axios.get("http://localhost:3002/adminhome")
+    api.get("/adminhome")
       .then(res => setAdminhomes(res.data))
       .catch(err => console.log(err))
   }
@@ -26,7 +26,7 @@ function AdminHome() {
     const data = { name, image, des, price }
 
     if (editId) {
-      axios.put(`http://localhost:3002/adminhome/${editId}`, data)
+      api.put(`/adminhome/${editId}`, data)
         .then(() => {
           alert("Food updated successfully")
           resetForm()
@@ -34,7 +34,7 @@ function AdminHome() {
         })
         .catch(err => console.log(err))
     } else {
-      axios.post("http://localhost:3002/adminhome", data)
+      api.post("/adminhome", data)
         .then(() => {
           alert("Food added successfully")
           resetForm()
@@ -54,7 +54,7 @@ function AdminHome() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      axios.delete(`http://localhost:3002/adminhome/${id}`)
+      api.delete(`/adminhome/${id}`)
         .then(() => fetchData())
         .catch(err => console.log(err))
     }

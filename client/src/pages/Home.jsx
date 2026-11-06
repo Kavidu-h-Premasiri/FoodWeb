@@ -4,14 +4,14 @@ import "../css/Home.css";
 import NavigationBar from "../components/NavigationBar";
 import Footer from "../components/Footer";
 import { addToCart } from "../components/cartUtils";
-import axios from "axios";
+import api from "../api";
 
 function Home() {
   // fetch data from adminhome
   const [adminfoods, setAdminfoods] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:3002/adminhome") // <-- updated endpoint
+    api.get("/adminhome") // <-- updated endpoint
       .then(res => setAdminfoods(res.data))
       .catch(err => console.log(err))
   }, [])

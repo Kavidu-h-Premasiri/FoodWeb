@@ -10,6 +10,7 @@ function AdminNav() {
   const handleLogout = () => {
     // clear auth data if you have (example)
     localStorage.removeItem("token");
+    localStorage.removeItem("adminToken");
     navigate("/login");
   };
 
